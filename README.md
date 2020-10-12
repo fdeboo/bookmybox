@@ -65,12 +65,26 @@
  
  </div>
 
+ <div align="center">
+
+<img src="wireframes/profile.png" alt="profile view"/>
+ 
+ </div>
+
+### Design Notes <a name="design"></a>
+<div align="center">
+
+<img src="wireframes/color_palette.png" alt="colors"/>
+ 
+ </div>
+
 ## Information Architecture <a name="models"></a>
 ### Models
 
 <div align="center">
 
 <img src="wireframes/schema_v2.png" alt="schemav2"/>
+<p>&nbsp;</p>
 <img src="wireframes/schema.png" alt="schema"/>
  
  </div>
