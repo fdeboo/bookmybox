@@ -71,23 +71,26 @@
  
  </div>
 
+ <div align="center">
+
+<img src="wireframes/detail.png" alt="detail view"/>
+ 
+ </div>
+
 ### Design Notes <a name="design"></a>
+#### Typography
++ The fonts chosen for this project are <b>"Lobster Two,"</b> <b>"Open Sans"</b> and <b>"EB Garamond."</b> from google fonts
++ Lobster Two is a cursive display font used in this project for the logo and top level headings. It's ligatures that connect individual characters give it the elegance of script but  
++ Any quoted data such as the searched input returned in the 'no results found' message is written in EB Garamond italic. This serif font is traditional and elegant and compliments Patua One.
 <div align="center">
 
-<img src="wireframes/color_palette.png" alt="colors"/>
+<img src="wireframes/colourpalette.png" alt="colors"/>
+<img src="wireframes/colourpalette2nd.png" alt="colors"/>
  
  </div>
 
 ## Information Architecture <a name="models"></a>
 ### Models
-
-<div align="center">
-
-<img src="wireframes/schema_v2.png" alt="schemav2"/>
-<p>&nbsp;</p>
-<img src="wireframes/schema.png" alt="schema"/>
- 
- </div>
 
 ***
 
@@ -97,27 +100,27 @@
 
 <p>&nbsp;</p>
 
-#### Box
+#### Suite
 
-| Name          | Key in db     | Field Type   | Validation                |
+| Name          | Key in db     | Field Type   | Options                   |
 |:--------------|:--------------|:-------------|:--------------------------|
-| Box Number    | box_num       | IntegerField |                           |
-| Box Capacity  | box_capacity  | IntegerField | max_value=24, blank=True  |
+| Suite Number  | suite_no      | IntegerField | primary_key=True          |
+| Capacity      | capacity      | IntegerField | max_value=24, blank=True  |
 
 <p>&nbsp;</p>
 
 #### Account
 
-| Name        | Key in db   | Field Type         | Validation                 |
-|:------------|:------------|:-------------------|:---------------------------|
-| Box         | box         | OneToOneField(Box) |                            |
-| Name        | name        | CharField          | max_length=75              |
-| Email       | email       | EmailField         | max_length=75              |
-| Address 1   | address1    | CharField          | max_length=75              |
-| Address 2   | address2    | CharField          | max_length=500, blank=True |
-| Postcode    | postcode    | CharField          | max_length=75              |
-| City        | city        | CharField          | max_length=75              |
-| Country     | country     | CharField          | max_length=75              |
+| Name        | Key in db   | Field Type           | Options                    |
+|:------------|:------------|:---------------------|:---------------------------|
+| Suite       | suite       | OneToOneField(Suite) |                            |
+| Name        | name        | CharField            | max_length=75              |
+| Email       | email       | EmailField           | max_length=75              |
+| Address 1   | address1    | CharField            | max_length=75              |
+| Address 2   | address2    | CharField            | max_length=500, blank=True |
+| Postcode    | postcode    | CharField            | max_length=75              |
+| City        | city        | CharField            | max_length=75              |
+| Country     | country     | CharField            | max_length=75              |
 
 <p>&nbsp;</p>
 
@@ -140,15 +143,15 @@
 
 #### Event
 
-| Name        | Key in db   | Field Type                                   | Validation                 |
-|:------------|:------------|:---------------------------------------------|:---------------------------|
-| Name        | event_name  | CharField                                    | max_length=75              |
-| Date        | date        | DateTimeField                                |                            |
-| Category    | event_type  | ForeignKey(Category)                         | on_delete=""               |
-| Description | description | TextField                                    | max_length=500, blank=True |
-| Image_url   | image_url   | UrlField                                     | blank=True                 |
-| Image       | image       | ImageField                                   | blank=True                 |
-| Boxes       | boxes       | ManyToManyField(Box, through='Reservations') | blank=True                 |
+| Name        | Key in db   | Field Type                                     | Validation                 |
+|:------------|:------------|:-----------------------------------------------|:---------------------------|
+| Name        | event_name  | CharField                                      | max_length=75              |
+| Date        | date        | DateTimeField                                  |                            |
+| Category    | event_type  | ForeignKey(Category)                           | on_delete=""               |
+| Description | description | TextField                                      | max_length=500, blank=True |
+| Image_url   | image_url   | UrlField                                       | blank=True                 |
+| Image       | image       | ImageField                                     | blank=True                 |
+| Suites      | suites      | ManyToManyField(Suite, through='Reservations') | blank=True                 |
 
 <p>&nbsp;</p>
 
@@ -185,13 +188,21 @@
 
 | Name           | Key in db     | Field Type         | Validation                 |
 |:---------------|:--------------|:-------------------|:---------------------------|
-| Box            | box           | ForeignKey(Box)    | max_length=75              |
+| Suite          | suite         | ForeignKey(Suite)  | max_length=75              |
 | Event          | event         | ForeignKey(Event)  |                            |
 | Guests         | guests_no     | IntegerField       |                            |
 | Food Package   | food_package  | ForeignKey(Food)   | max_length=500, blank=True |
 | Drinks Package | drink_package | ForeignKey(Drinks) | blank=True                 |
 
 
+<p>&nbsp;</p>
 
+***
 
 <p>&nbsp;</p>
+
+<div align="center">
+
+<img src="wireframes/schema.png" alt="schema"/>
+ 
+ </div>
