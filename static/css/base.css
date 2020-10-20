@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=MuseoModerno:wght@400;500;600&display=swap');
+
+:root {
+    --off-white: #EBEAE9;
+    --dark-grey: #393430;
+    --turq-blue: #438DA3;
+    --copper: #A37343;
+    --highlight-yellow: #F0C24A;
+    --beige-bg: #C4B293;
+    --gold: #A3873B;
+    --blue-dark: #1D5166;
+}
+
+html {
+    background-color: var(--off-white);
+}
+
+.logo-font {
+    font-family: 'MuseoModerno', cursive;
+}
+
+.logo-font span {
+    color: var(--turq-blue);
+}
+
+.container-dark, .container-dark a {
+    background-color: var(--dark-grey);
+    color: var(--off-white);
+}
+
+.sub-header {
+    background-color: #E8C560;
+    color: var(--copper);
+}
