@@ -31,50 +31,47 @@
 
     <title>BookMyBox {% block extra_title %}{% endblock extra_title %}</title>
   </head>
+
   <body>
-    <header class="container-fluid fixed-top container-dark">
-        <div class="row">
-          <div class="col">
-            <div class="container-lg">
-              <div class="row">
-                <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
-                  <a href="{% url 'portal' %}" class="nav-link main-logo-link">
-                    <h2 class="logo-font my-0">book<span>my</span>box</h2>
-                  </a>
-                </div>
-                <div class="col-12 col-lg-8 my-auto py-1 py-lg-0">
-                  <ul class="list-inline list-unstyled text-center text-lg-right my-auto">
+    <header class="container-fluid sticky-top container-dark">
+        <div class="row justify-content-center">
+          <div class="col-10">
+            <div class="row">
+              <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
+                <a href="{% url 'portal' %}" class="nav-link pl-0 main-logo-link">
+                  <h2 class="logo-font my-0">book<span>my</span>box</h2>
+                </a>
+              </div>
+              <div class="col-12 col-lg-8 my-auto py-1 py-lg-0">
+                <ul class="list-inline list-unstyled text-center text-lg-right my-auto">
+                  <li class="list-inline-item">
+                    <a class="nav-link" href="#">
+                        <p class="my-0"><i class="fas fa-sign-out-alt mr-1"></i>Product Management</p>
+                    </a>
+                  </li>
 
-                    <li class="list-inline-item">
-                      <a class="nav-link" href="#">
-                          <p class="my-0"><i class="fas fa-sign-out-alt mr-1"></i>Product Management</p>
-                      </a>
-                    </li>
+                  <li class="list-inline-item">
+                    <a class="nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <p class="my-0"><i class="far fa-user-circle mr-1"></i>My Account</p>
+                    </a>
+                  </li>
 
-                    <li class="list-inline-item">
-                      <a class="nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <p class="my-0"><i class="far fa-user-circle mr-1"></i>My Account</p>
-                      </a>
-                    </li>
-                    <li class="list-inline-item">
-                      <a class="nav-link" href="#">
-                          <p class="my-0"><i class="fas fa-sign-out-alt mr-1"></i>Logout</p>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
+                  <li class="list-inline-item">
+                    <a class="nav-link" href="#">
+                        <p class="my-0"><i class="fas fa-sign-out-alt mr-1"></i>Logout</p>
+                    </a>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>  
         </div>
-        <div class="row sub-header">
-          <div class="col">
-            <div class="container-lg text-center font-weight-bold py-2">
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam 
-            </div>
-          </div>  
-        </div>
-      </div>
+
+        <div class="row sub-header justify-content-center">
+          <div class="col-10 text-center font-weight-bold py-2">
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam 
+          </div>
+        </div>      
     </header>
 
     {% if messages %}
@@ -82,11 +79,23 @@
     {% endif %}
 
     {% block page_header %}
-
     {% endblock page_header %}
 
-    {% block content %}
-    {% endblock content %}
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-10 mb-5 img-header">
+          <div class="h-100 event"></div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-10">
+          <div class="row">
+          {% block content %}
+          {% endblock content %}
+          </div>
+        </div>
+      </div>
+    </div>
 
     {% block postloadjs %}
     {% endblock postloadjs %}

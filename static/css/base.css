@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=MuseoModerno:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=MuseoModerno:wght@400;500;600&display=swap');
 
 :root {
     --off-white: #EBEAE9;
@@ -8,11 +8,17 @@
     --highlight-yellow: #F0C24A;
     --beige-bg: #C4B293;
     --gold: #A3873B;
-    --blue-dark: #1D5166;
+    --dark-blue: #1D5166;
 }
 
-html {
+
+/* {
+    border: 1px solid red;
+}*/
+
+body {
     background-color: var(--off-white);
+    font-family: 'Montserrat', sans-serif;
 }
 
 .logo-font {
@@ -23,12 +29,57 @@ html {
     color: var(--turq-blue);
 }
 
+.sub-header {
+    background-color: #E8C560;
+    color: var(--copper);
+}
+
 .container-dark, .container-dark a {
     background-color: var(--dark-grey);
     color: var(--off-white);
 }
 
-.sub-header {
-    background-color: #E8C560;
-    color: var(--copper);
+.container-white, .container-white a {
+    background-color: #fff;
+    color: var(--dark-grey);
+}
+
+h3 {
+    font-size: 1.1rem;
+    padding: 20px 0;
+    margin: 0;
+}
+
+.img-header {
+    height: 15vh;
+}
+
+.bg-offwhite {
+    background-color: var(--off-white);
+}
+
+.bg-turq {
+    background-color: var(--turq-blue);
+}
+
+.bg-blue {
+    background-color: var(--dark-blue);
+}
+
+.bg-gold {
+    background-color: var(--gold);
+}
+
+@media (min-width: 1570px) {
+    .super-content {
+        -ms-flex: 0 0 75%;
+        flex: 0 0 75%;
+        max-width: 75%;
+    }
+    .sub-content {
+        -ms-flex: 0 0 25%;
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+    
 }
