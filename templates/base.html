@@ -35,14 +35,42 @@
   <body>
     <header class="container-fluid sticky-top container-dark">
         <div class="row justify-content-center">
-          <div class="col-10">
-            <div class="row">
-              <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
+          <div class="col-12 col-md-10">
+            <nav class="navbar navbar-dark navbar-expand-lg p-0">
+              <a href="{% url 'portal' %}" class="nav-link pl-0 main-logo-link">
+                <h2 class="logo-font my-0">book<span>my</span>box</h2>
+              </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                  <div class="collapse navbar-collapse" id="main-nav">
+                    <ul class="navbar-nav w-100 pl-0 justify-content-end text-center">
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <p class="my-0"><i class="fas fa-sign-out-alt mr-1"></i>Product Management</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <p class="my-0"><i class="far fa-user-circle mr-1"></i>My Account</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <p class="my-0"><i class="fas fa-sign-out-alt mr-1"></i>Logout</p>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+              </nav>
+            </div>
+              <!---<div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
                 <a href="{% url 'portal' %}" class="nav-link pl-0 main-logo-link">
                   <h2 class="logo-font my-0">book<span>my</span>box</h2>
                 </a>
-              </div>
+              </div> 
               <div class="col-12 col-lg-8 my-auto py-1 py-lg-0">
+                
                 <ul class="list-inline list-unstyled text-center text-lg-right my-auto">
                   <li class="list-inline-item">
                     <a class="nav-link" href="#">
@@ -62,7 +90,9 @@
                     </a>
                   </li>
                 </ul>
-              </div>
+              </div> -->
+
+
             </div>
           </div>  
         </div>
@@ -88,7 +118,7 @@
         </div>
       </div>
       <div class="row justify-content-center">
-        <div class="col-10">
+        <div class="col-12 col-md-10">
           <div class="row">
           {% block content %}
           {% endblock content %}

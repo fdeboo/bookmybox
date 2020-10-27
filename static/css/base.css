@@ -70,9 +70,24 @@ h3 {
     background-color: var(--gold);
 }
 
+.nav-item {
+    margin-left: .5rem;
+}
+
+.nav-link {
+    color: var(--off-white)!important;
+}
+
+.img-card {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+}
+
 .card {
     border-bottom: 3px solid var(--turq-blue);
 }
+
 
 @media (min-width: 1570px) {
     .super-content {
