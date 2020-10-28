@@ -1,0 +1,11 @@
+<div class="card h-100 rounded-0">
+    <a href="{% url 'event_detail' event.id %}" class="bg-turq">
+        <img class="img-fluid img-card" src="{{ event.image_url }}" alt="{{ event.name }}">
+    </a>
+    <div class="card-body pb-0">
+        <h3>{{ event.name }}</h3>
+        <small>{{ event.date }}</small>
+    </div>
+    <div class="card-footer pt-0"></div>
+</div>
+

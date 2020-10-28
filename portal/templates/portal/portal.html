@@ -2,48 +2,68 @@
 {% load static %}
 
 {% block content %}
-    <div class="col-12 col-lg-8 super-content">
-        {% include 'events/includes/event-grid.html' %}    
-    </div>
-    <div class="col-12 col-lg-4 sub-content">
-        <div class="row mb-3">
-            <div class="col-12">
-                <h3 class="">Reservations</h3>
-                <div class="container container-dark">
-                    <div class="row py-3">
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-4" style="height:50px;">
-                                    <div class="h-100 w-100 bg-turq"></div>
-                                </div>
-                                <div class="col-8"></div>
-                            </div>
-                            <hr class="bg-offwhite">
-                            <div class="row">
-                                <div class="col-4" style="height:50px;"></div>
-                                <div class="col-8"></div>
-                            </div>
-                            <hr class="bg-offwhite">
-                            <div class="row">
-                                <div class="col-4" style="height:50px;"></div>
-                                <div class="col-8"></div>
-                            </div>
-                            <hr class="bg-offwhite">
-                        </div>
-                        <div class="col-12 text-center">
-                            <button class="btn rounded-pill bg-turq">View</button>
-                            <button class="btn rounded-pill bg-gold"></button>
-                        </div>
-                        <hr>
+    <div class="row">
+        <div class="col-12 col-lg-8 super-content">
+            {% include 'events/includes/events-header.html' %}
+
+            <div class="row">
+                {% for event in events %}
+                    <div class="col-12 col-md-6 col-lg-4">
+                        {% include 'events/includes/event-cards.html' %}   
                     </div>
 
+                    {% include 'events/includes/sm-divisions.html' %} 
+
+                    {% if forloop.counter|divisibleby:3 %}
+                        <div class="col-12 d-none d-lg-block mb-4">
+                            <hr>
+                        </div>
+                    {% endif %}
+                    
+                {% endfor %}
+            </div> 
+
+        </div>
+        <div class="col-12 col-lg-4 sub-content">
+            <div class="row mb-3">
+                <div class="col-12">
+                    <h3 class="">Reservations</h3>
+                    <div class="container container-dark">
+                        <div class="row py-3">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-4" style="height:50px;">
+                                        <div class="h-100 w-100 bg-turq"></div>
+                                    </div>
+                                    <div class="col-8"></div>
+                                </div>
+                                <hr class="bg-offwhite">
+                                <div class="row">
+                                    <div class="col-4" style="height:50px;"></div>
+                                    <div class="col-8"></div>
+                                </div>
+                                <hr class="bg-offwhite">
+                                <div class="row">
+                                    <div class="col-4" style="height:50px;"></div>
+                                    <div class="col-8"></div>
+                                </div>
+                                <hr class="bg-offwhite">
+                            </div>
+                            <div class="col-12 text-center">
+                                <button class="btn rounded-pill bg-turq">View</button>
+                                <button class="btn rounded-pill bg-gold"></button>
+                            </div>
+                            <hr>
+                        </div>
+
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row mb-3">
-            <div class="col-12">
-                <h3 class="">Order History</h3>
-                <div class="container container-white" style="height:250px;"></div>
+            <div class="row mb-3">
+                <div class="col-12">
+                    <h3 class="">Order History</h3>
+                    <div class="container container-white" style="height:250px;"></div>
+                </div>
             </div>
         </div>
     </div>
