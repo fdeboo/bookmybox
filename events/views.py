@@ -1,4 +1,6 @@
 from django.shortcuts import render, get_object_or_404
+from django.conf import settings
+from datetime import datetime
 from .models import Event
 
 def all_events(request):
@@ -15,7 +17,7 @@ def event_detail(request, event_id):
     """ A view to show individual event details """
     event = get_object_or_404(Event, pk=event_id)
 
-    template = 'events/event-detail.html'
+    template = 'events/event_detail.html'
     context = {
         "event": event,
     }

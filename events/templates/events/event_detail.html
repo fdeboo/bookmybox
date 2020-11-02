@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row bg-white">
+    <div class="col-12 col-lg-5 px-0 img-content">
+        <a href="{{ event.image_url }}" target="blank">
+            <img class="img-fluid img-card" src="{{ event.image_url }}" alt="{{ event.name }}">
+        </a>
+    </div>
+    <div class="col-12 col-lg-7 event-content p-4">
+        <div class="row pl-4">
+            <div class="col-10">
+                <div class="row">
+                    <div class="col-12">
+                        <h3 class="">{{ event.name }}</h3>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-auto">
+                        <h4 class="">{{ event.date | date:'DATE_FORMAT' }}</h4>
+                    </div>
+                    <div class="col text-right">
+                        <h4 class="">{{ event.date | time }}</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <p>{{ event.description }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-end">
+            <div class="col-6 text-right">
+                <button>Reserve</button>
+                <button>Back</button>
+            </div>
+        </div>
+
+
+
+        </div>  
+    </div>
+</div>
+{% endblock content %}
