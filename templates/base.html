@@ -13,7 +13,7 @@
     
     {% block corecss %}
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        <link rel="stylesheet" href="{% static 'css/base.min.css' %}">
     {% endblock corecss %}
 
     {% block extra_css %}
@@ -36,7 +36,7 @@
     <header class="container-fluid sticky-top container-dark">
         <div class="row justify-content-center">
           <div class="col-12 col-md-10">
-            <nav class="navbar navbar-dark navbar-expand-lg p-0">
+            <nav class="navbar navbar-expand-lg p-0">
               <a href="{% url 'portal' %}" class="nav-link pl-0 main-logo-link">
                 <h1 class="logo-font my-0">book<span>my</span>box</h1>
               </a>

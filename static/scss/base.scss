@@ -1,0 +1,111 @@
+@import 'config';
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=MuseoModerno:wght@400;500;600&display=swap');
+
+body {
+    background-color: $off-white;
+    font: {
+        family: $font-stack;
+        color: $dark-grey;
+    }
+}
+
+.logo-font {
+    font-family: 'MuseoModerno', cursive;
+    font-size: 2rem;
+    span {
+        color: $light-blue;
+    }
+}
+
+.sub-header {
+    background-color: $highlight-yellow;
+    color: $copper;
+}
+
+.container-dark, .container-dark a {
+    background-color: $dark-grey;
+    color: $off-white;
+}
+
+.container-white, .container-white a {
+    background-color: #fff;
+}
+
+a {
+    text-decoration: none;
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+h2 {
+    font-size: 1.0rem;
+    padding: 20px 0;
+    margin: 0;
+}
+
+h3 {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+h4 {
+    font-size: 1.0rem;
+    font-weight: 500;
+}
+
+.img-header {
+    height: 15vh;
+}
+
+.bg-offwhite {
+    background-color: $off-white;
+}
+
+.bg-turq {
+    background-color: $light-blue;
+}
+
+.bg-blue {
+    background-color: $dark-blue;
+}
+
+.bg-gold {
+    background-color: $gold;
+}
+
+nav {
+    li {
+        margin-left: .5rem;
+    }
+    a {
+        color: $off-white;
+        &:hover {
+            color: $light-blue;
+            background-color: #000;
+            text-decoration: underline;
+        }
+    }
+}
+
+.card {
+    border-bottom: 3px solid $light-blue;
+    img {
+        width: 100%;
+        max-height: 300px;
+        object-fit: cover;
+    }
+}
+
+
+@media (min-width: 1570px) {
+    .super-content {
+        flex: 0 0 75%;
+        max-width: 75%;
+    }
+    .sub-content {
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+    
+}
