@@ -3,7 +3,7 @@
         <img class="img-fluid" src="{{ event.image_url }}" alt="{{ event.name }}">
         <div class="card-body pb-0">
             <h3>{{ event.name }}</h3>
-            <small>{{ event.date }}</small>
+            <small>{{ event.date|date:'DATE_FORMAT'  }}</small>
         </div>
         <div class="card-footer pt-0"></div>
     </a>

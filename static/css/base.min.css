@@ -1,18 +1,9 @@
-/* define colours */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=MuseoModerno:wght@400;500;600&display=swap");
+/* define colours */
 body {
   background-color: #EBEAE9;
+  color: #393430;
   font-family: "Montserrat", sans-serif;
-  font-color: #393430;
-}
-
-.logo-font {
-  font-family: 'MuseoModerno', cursive;
-  font-size: 2rem;
-}
-
-.logo-font span {
-  color: #438DA3;
 }
 
 .sub-header {
@@ -57,8 +48,8 @@ h4 {
   height: 15vh;
 }
 
-.bg-offwhite {
-  background-color: #EBEAE9;
+.offwhite {
+  color: #EBEAE9;
 }
 
 .bg-turq {
@@ -73,18 +64,42 @@ h4 {
   background-color: #A3873B;
 }
 
-nav li {
+.navbar li {
   margin-left: .5rem;
 }
 
-nav a {
-  color: #EBEAE9;
+.navbar li .nav-link {
+  color: #EBEAE9 !important;
 }
 
-nav a:hover {
-  color: #438DA3;
+.navbar li .nav-link:hover {
+  color: #438DA3 !important;
   background-color: #000;
-  text-decoration: underline;
+  text-decoration: underline !important;
+}
+
+.navbar .main-logo-link:hover {
+  background-color: transparent;
+}
+
+.navbar .main-logo-link h1 {
+  font-family: 'MuseoModerno', cursive;
+  font-size: 2rem;
+}
+
+.navbar .main-logo-link h1 span {
+  color: #438DA3;
+}
+
+.search-relative {
+  position: relative;
+}
+
+.search-relative button {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: .5rem;
 }
 
 .card {
