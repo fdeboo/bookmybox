@@ -23,4 +23,9 @@
         <a href="{% url 'events' %}?category=sport">Sports</a>
         <a href="{% url 'events' %}?category=theatre">Theatre</a>
     </div>
+    <div class="col-12 d-flex justify-content-between">
+        <a href="{% url 'events' %}?sort=category&direction=asc">By Category</a>
+        <a href="{% url 'events' %}?sort=name&direction=asc">By Name</a>
+        <a href="{% url 'events' %}?sort=date&direction=asc">By Date</a>
+    </div>
 </div>

@@ -5,7 +5,15 @@
             <h3>{{ event.name }}</h3>
             <small>{{ event.date|date:'DATE_FORMAT'  }}</small>
         </div>
-        <div class="card-footer pt-0"></div>
+        <div class="card-footer pt-0">
+            {% if event.category %}
+                <p class="small mt-1 mb-0">
+                    <a href="{% url 'events' %}?category={{ event.category.name }}" class="text-muted">
+                        <i class="fas fa-tag mr-1"></i>{{ event.category.friendly_name }}
+                    </a>
+                </p>
+            {% endif %}
+        </div>
     </a>
 </div>
 
