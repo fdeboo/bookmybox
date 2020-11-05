@@ -15,22 +15,23 @@
     * [Existing Features](#existing_feat)
     * [Features left to implment](#future_feat)
 4. [Information Architecture](#models)
-    * 
 5. [Technologies Used](#technologies)
 6. [Testing](#testing)
-7. [Deployment](#deployment)
+7. [Deployment](#deploying)
+    * [Run Locally](#local)
+    * [Deploy to Heroku](#heroku)
 8. [Credits](#credits)
     * [Content](#content)
     * [Media](#media)
     * [Acknowledgements](#acknowledgements)
 
-## Introduction <a name="introduction"></a>
+# Introduction <a name="introduction"></a>
 
-### Objective <a name="strategy"></a>
+## Objective <a name="strategy"></a>
 + This app provides a platform for private members at an events venue to reserve their hospitality package for upcoming events  
 
 
-### User Stories <a name="users"></a>
+## User Stories <a name="users"></a>
 "As a box owner, I would like to ___________"
 + View the upcoming events 
 + Sort the events by category
@@ -58,49 +59,49 @@
 
 
 
-### Wireframes <a name="wireframes"></a>
+## Wireframes <a name="wireframes"></a>
 <div align="center">
 
-<img src="wireframes/login.png" alt="login view"/>
+<img src="bookmybox/static/wireframes/login.png" alt="login view"/>
  
  </div>
 
  <div align="center">
 
-<img src="wireframes/profile.png" alt="profile view"/>
+<img src="bookmybox/static/wireframes/profile.png" alt="profile view"/>
  
  </div>
 
  <div align="center">
 
-<img src="wireframes/detail.png" alt="detail view"/>
+<img src="bookmybox/static/wireframes/detail.png" alt="detail view"/>
  
  </div>
 
-### Design Notes <a name="design"></a>
-#### Typography
+## Design Notes <a name="design"></a>
+### Typography
 + The fonts chosen for this project are <b>"Lobster Two,"</b> <b>"Open Sans"</b> and <b>"EB Garamond."</b> from google fonts
 + Lobster Two is a cursive display font used in this project for the logo and top level headings. It's ligatures that connect individual characters give it the elegance of script but  
 + Any quoted data such as the searched input returned in the 'no results found' message is written in EB Garamond italic. This serif font is traditional and elegant and compliments Patua One.
 <div align="center">
 
-<img src="wireframes/colourpalette.png" alt="colors"/>
-<img src="wireframes/colourpalette2nd.png" alt="colors"/>
+<img src="bookmybox/static/wireframes/colourpalette.png" alt="colors"/>
+<img src="bookmybox/static/wireframes/colourpalette2nd.png" alt="colors"/>
  
  </div>
 
-## Information Architecture <a name="models"></a>
-### Models
+# Information Architecture <a name="models"></a>
+## Models
 
 ***
 
 <p>&nbsp;</p>
 
-### Profile:
+## Profile:
 
 <p>&nbsp;</p>
 
-#### Suite
+### Suite
 
 | Name          | Key in db     | Field Type   | Options                   |
 |:--------------|:--------------|:-------------|:--------------------------|
@@ -109,7 +110,7 @@
 
 <p>&nbsp;</p>
 
-#### Account
+### Account
 
 | Name        | Key in db   | Field Type           | Options                    |
 |:------------|:------------|:---------------------|:---------------------------|
@@ -128,11 +129,11 @@
 
 <p>&nbsp;</p>
 
-### Events:
+## Events:
 
 <p>&nbsp;</p>
 
-#### Category
+### Category
 
 | Name          | Key in db     | Field Type | Validation                |
 |:--------------|:--------------|:-----------|:--------------------------|
@@ -141,7 +142,7 @@
 
 <p>&nbsp;</p>
 
-#### Event
+### Event
 
 | Name        | Key in db   | Field Type                                     | Validation                 |
 |:------------|:------------|:-----------------------------------------------|:---------------------------|
@@ -159,11 +160,11 @@
 
 <p>&nbsp;</p>
 
-### Reservations:
+## Reservations:
 
 <p>&nbsp;</p>
 
-#### Food Package
+### Food Package
 
 | Name  | Key in db | Field Type   | Validation                                            |
 |:------|:----------|:-------------|:------------------------------------------------------|
@@ -173,7 +174,7 @@
 
 <p>&nbsp;</p>
 
-#### Drinks Package
+### Drinks Package
 
 | Name  | Key in db | Field Type   | Validation                                            |
 |:------|:----------|:-------------|:------------------------------------------------------|
@@ -183,7 +184,7 @@
 
 <p>&nbsp;</p>
 
-#### Reservation:
+### Reservation:
 
 
 | Name           | Key in db     | Field Type         | Validation                 |
@@ -203,6 +204,86 @@
 
 <div align="center">
 
-<img src="wireframes/schema.png" alt="schema"/>
+<img src="bookmybox/static/wireframes/schema.png" alt="schema"/>
  
  </div>
+
+
+# Deployment <a name="deploying"></a>
+
+ ## Run Locally <a name="local"></a>
+
+In order to run the project locally, you will need an IDE, PIP, Python version 3.8 and Git installed.
+You will need to set up free accounts with AWS for a s3 bucket.
+
+1. Visit the bookmybox repository on Github; [https://github.com/fdeboo/bookmybox](https://github.com/fdeboo/bookmybox) and click on ![clone](bookmybox/static/screenshots/clone.png) to clone or download it.
+
+2. Either: 
+    * Copy the web url. In the terminal of your IDE, change directory (`cd`) to  where you want the project saved on your system.
+    * Type `git clone` and paste in the copied web url to complete the command _(as below)_: 
+
+        <pre><code>git clone https://github.com/fdeboo/bookmybox.git</code></pre>
+    
+    
+    **_or_**
+
+    * Click to **Download Zip** and save the folder somewhere on your local system
+    * File > Open the project from within your IDE
+    
+3. Activate a virtual environment. For this, I recommend using the **pipenv** package which manages the virtualenv and automatically adds/removes packages to a Pipfile when they are un/installed.   
+    * On MacOS, pipenv is installed simply by typing `brew install pipenv` in the Mac Terminal. You can read more about pipenv and its installation using other software [here](https://pypi.org/project/pipenv/). 
+
+
+        _NOTE: The Pipfile created by **pipenv** supersedes the requirements.txt_
+    
+    * Once pipenv insalled, activate it with the following command:
+
+        <pre><code>pipenv shell</code></pre>
+
+4. Install the project dependencies detailed in the Pipfile by typing  
+
+        pipenv install
+
+5. Set up a .env file in the project root and provide the folllowing environment variables:
+
+        SECRET_KEY=your_secret_key
+        DATABASE_URL=your_database_url
+        STRIPE_PUBLIC_KEY=your_stripe_public_key
+        STRIPE_SECRET_KEY=your_stripe_secret_key
+        STRIPE_WH_SECRET=you_stripe_wh_secret
+        DEVELOPMENT=True
+
+6. If using VSCode, or if otherwise necessary, restart the IDE and reactivate the virtual environment (as per step 3)
+7. Migrate the admin panel models to create the database template:
+
+        python3 manage.py migrate
+
+9. Create a 'superuser' account for access to the django admin panel: 
+
+        python3 manage.py createsuperuser
+
+10. Finally, run the app locally with the following command:
+    
+        python3 manage.py runserver</code></pre>
+
+ ## Deploying to Heroku <a name="heroku"></a>
+
+_NOTE: The Pipfile created by **pipenv** supersedes the requirements.txt and contains all information for the dependencies of the project_
+
+1. Type the following command into the Terminal to create a Procfile:
+        
+        echo web: python app.py > Procfile
+
+2. Change the contents of the Procfile to 
+
+        web: gunicorn bookmybox.wsgi:application</code></pre>
+    
+3. Log in to Heroku and click 'New' from your Personal dashboard to Create an New App
+
+
+
+
+
+
+
+
