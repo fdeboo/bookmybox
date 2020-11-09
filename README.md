@@ -211,18 +211,18 @@
 
 # Deployment <a name="deploying"></a>
 
- ## Run Locally <a name="local"></a>
+ ## Run Locally {#local}
 
-In order to run the project locally, you will need an IDE, PIP, Python version 3.8 and Git installed.
-You will need to set up free accounts with AWS for a s3 bucket.
+ > In order to run the project locally, you will need an IDE, PIP, Python (version 3) and Git installed.
+You will need to set up a free account with Stripe and with AWS for a S3 bucket.
 
-1. Visit the bookmybox repository on Github; [https://github.com/fdeboo/bookmybox](https://github.com/fdeboo/bookmybox) and click on ![clone](bookmybox/static/screenshots/clone.png) to clone or download it.
+1. Visit the bookmybox repository on Github; [https://github.com/fdeboo/bookmybox](https://github.com/fdeboo/bookmybox) and click on ![Code](bookmybox/static/screenshots/clone.png) to clone or download it.
 
 2. Either: 
-    * Copy the web url. In the terminal of your IDE, change directory (`cd`) to  where you want the project saved on your system.
+    * Copy the web url. In the terminal of your IDE, change directory / `cd` to  where you want the project saved on your system.
     * Type `git clone` and paste in the copied web url to complete the command _(as below)_: 
 
-        <pre><code>git clone https://github.com/fdeboo/bookmybox.git</code></pre>
+            git clone https://github.com/fdeboo/bookmybox.git
     
     
     **_or_**
@@ -234,7 +234,7 @@ You will need to set up free accounts with AWS for a s3 bucket.
     * On MacOS, pipenv is installed simply by typing `brew install pipenv` in the Mac Terminal. You can read more about pipenv and its installation using other software [here](https://pypi.org/project/pipenv/). 
 
 
-        _NOTE: The Pipfile created by **pipenv** supersedes the requirements.txt_
+        > _NOTE: The Pipfile created by **pipenv** supersedes the requirements.txt_
     
     * Once pipenv insalled, activate it with the following command:
 
@@ -244,16 +244,20 @@ You will need to set up free accounts with AWS for a s3 bucket.
 
         pipenv install
 
-5. Set up a .env file in the project root and provide the folllowing environment variables:
+5. Set up a .env file in the project root and provide the folllowing environment variables: 
+
+    _*for guidance on where to obtain these values click [here](#guidance)_
 
         SECRET_KEY=your_secret_key
-        DATABASE_URL=your_database_url
         STRIPE_PUBLIC_KEY=your_stripe_public_key
         STRIPE_SECRET_KEY=your_stripe_secret_key
-        STRIPE_WH_SECRET=you_stripe_wh_secret
+        STRIPE_WH_SECRET=your_stripe_wh_secret
         DEVELOPMENT=True
 
-6. If using VSCode, or if otherwise necessary, restart the IDE and reactivate the virtual environment (as per step 3)
+    >_Important! Make sure you set up a .gitignore file and list .env in it so that it is ignored in commits to GitHub_
+
+6. If using VSCode, or else if necessary, restart the IDE and reactivate the virtual environment (as per step 3)
+
 7. Migrate the admin panel models to create the database template:
 
         python3 manage.py migrate
@@ -264,22 +268,107 @@ You will need to set up free accounts with AWS for a s3 bucket.
 
 10. Finally, run the app locally with the following command:
     
-        python3 manage.py runserver</code></pre>
+        python3 manage.py runserver
 
  ## Deploying to Heroku <a name="heroku"></a>
-
-_NOTE: The Pipfile created by **pipenv** supersedes the requirements.txt and contains all information for the dependencies of the project_
+> _NOTE: The Pipfile created by **pipenv** supersedes the requirements.txt and contains all information for the dependencies of the project. Therefore a requirements.txt is not necessary in this project._
 
 1. Type the following command into the Terminal to create a Procfile:
         
         echo web: python app.py > Procfile
 
-2. Change the contents of the Procfile to 
+2. Change the contents of the Procfile to: 
 
-        web: gunicorn bookmybox.wsgi:application</code></pre>
+        web: gunicorn bookmybox.wsgi:application
     
-3. Log in to Heroku and click 'New' from your Personal dashboard to Create an New App
+3. Login to Heroku and click **New** from your Personal dashboard to **Create a New App**.
 
+4. Give the app a unique name and choose the relevant region.
+
+5. In the dashboard for the newly created app, set the **Deployment Method** (found under **Deploy** tab) to Connect to Github.
+
+6. Fill out your Github details and search for your repository. Click to connect.
+
+7. Choose whether you want to deploy Automatically or Manually.
+
+8. Navigate to **Resources** and search for _postgres_ in the Add-ons search bar. Choose **Heroku Postgres** from the dropdown.
+
+9.  Make sure the 'Plan name' is set to **Hobby Dev - Free**
+
+    ![Hobby_Dev - Free](bookmybox/static/screenshots/hobby_dev.png)
+
+10. Navigate to **Settings** and click on **Reveal Config Vars**.
+
+11. Ensure the following are set:
+
+    _*for guidance on where to obtain these values click [here](#guidance)_
+
+    ![Heroku Config Vars](bookmybox/static/screenshots/blurred_heroku_vars.png)
+    
+    <br>
+
+    ***    
+
+    #### Guidance   
+
+     AWS_ACCESS_KEY_ID: 
+    
+     + Create an account / Sign in to AWS and navigate to the **AWS Management Console**
+     + Search for S3 in AWS Services and **Create a bucket**. Follow the AWS [documentation.](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/create-configure-bucket.html)
+     + Create a User via the IAM service provided by aws
+
+    AWS_SECRET_ACCESS_KEY:
+
+    + As above
+    + copy the Secret Access Key
+
+    DATABASE_URL _(for production)_    
+    + This value is pre-populated by Heroku in the Config Vars. Alternatively, you can type `Heroku config` in the CLI
+
+    EMAIL_HOST_USER: 
+    + Your gmail account address
+    
+    EMAIL_HOST_PASS (steps are based on gmail account): 
+    + Sign in to gmail and go to **Settings** > _See all settings_.  
+    + Navigate to **Accounts &amp; Import** > **Other Google Account Settings.**
+    + From the side menu, click on **Security** and follow the steps to turn on 2-Step Verification.
+    + Click on **App Passwords**, choose 'Mail' from the first dropdown and 'other' from the second, giving it a reference i.e 'Django'
+
+    SECRET_KEY:
+    + Type `python3` in the terminal and then type `import secrets` and hit enter. Type `secrets.token_urlsafe(48)` to generate a secure randomized byte string containing 48 bytes.
+
+    STRIPE_PUBLIC_KEY:
+    + Create an account / Sign in to Stripe
+    + From the side menu, click on **Developers** > **API Keys**
+    + Copy the Publishable Key token
+
+    STRIPE_SERET_KEY:
+    + As above
+    + Copy the Secret Key token
+
+    STRIPE_WH_SERET:
+    + As above
+    + From the side menu, click on **Developers** > **Webhooks**
+    + Click on button to '+ Add endpoint'.
+    + Provide your endpoint url. If you are working locally, you may need to take these extra steps for a temporary url:
+        - Install ngrok. (On MacOs, `brew install ngrok`)
+        - Type `ngrok http  8000` in the terminal
+        - Add the temporary server address to ALLOWED_HOSTS in the app settings eg. `[“9e96e1506ea8.ngrok.io”, “127.0.0.1”]`
+        > Remember to append the path for the checkout to the end of the url, including the trailing '/':  `/checkout/wh/`
+    + Click the link alternative to **'receive all events'** in the 'Events to send' section and then 'Add endpoint'
+    + Copy the Signing secret provided.
+
+    USE_AWS:
+    + Set this to True
+
+    *** 
+
+
+12. Migrate changes to the database models
+
+13. Commit any changes to GitHub (master branch) and deploy to Heroku. If this is not set to happen automatically, click **Deploy** from Heroku dashboard and navigate to **Manual Deploy** at the bottom of the page. Select the master branch and click **Deploy Branch**. 
+
+14. Once the build is complete, click on **Open app** to view the site.
 
 
 
